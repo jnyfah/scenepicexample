@@ -21,13 +21,13 @@ set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 FetchContent_MakeAvailable(nodejs)
 
 # Install modules.
-execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd install WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic)
+execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd install WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic-src)
 
 # Add nodeJS directory to path.
 set(ENV{PATH} "${nodejs_SOURCE_DIR};$ENV{PATH}")
 
 # Build core library.
-execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd run build WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic)
+execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd run build WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic-src)
 
 FetchContent_MakeAvailable(scenepic)
 

@@ -14,11 +14,11 @@ FetchContent_Declare(nodejs
 FetchContent_Declare(scenepic
     GIT_REPOSITORY "https://github.com/microsoft/scenepic"
     GIT_TAG "ced3439e9bc22ea1b17df78090535db76f9c362d"
+    GIT_PROGRESS TRUE
 )
 
 
-set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
-FetchContent_MakeAvailable(nodejs)
+FetchContent_MakeAvailable(nodejs scenepic)
 
 # Install modules.
 execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd install WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic-src)
@@ -28,8 +28,6 @@ set(ENV{PATH} "${nodejs_SOURCE_DIR};$ENV{PATH}")
 
 # Build core library.
 execute_process(COMMAND ${nodejs_SOURCE_DIR}/npm.cmd run build WORKING_DIRECTORY ${FETCHCONTENT_BASE_DIR}/scenepic-src)
-
-FetchContent_MakeAvailable(scenepic)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} nodejs scenepic)

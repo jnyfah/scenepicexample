@@ -1,6 +1,7 @@
 #include <iostream>
+#include <scenepic>
 
 
 int main() {
-    std::cout<<"Jossy"<<std::endl;
+    std::cout<<"Scenepic"<<std::endl;
 }
